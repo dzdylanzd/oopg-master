@@ -22,7 +22,7 @@ import nl.han.ica.oopg.view.View;
 			int worldWidth = 500;
 			int worldHeight = 500;
 			
-			TextObject to = new TextObject("dit is de beste test dylan is poep", 40);
+			TextObject to = new TextObject("dit is de beste test kevin is poep", 40);
 			to.setForeColor(255, 255, 255, 255);
 			addGameObject(to, 100, 100);
 			
