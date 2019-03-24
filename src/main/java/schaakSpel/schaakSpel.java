@@ -45,16 +45,8 @@ public class schaakSpel extends GameEngine {
 //        addGameObject(koning, 200, 200);
 //        addGameObject(koning2, 400, 200);
         
-        schaakstuk koning = new Koning(this,schaakstuk.WIT);
-        schaakstuk toren = new Toren(this,schaakstuk.ZWART);
-        schaakstuk paard = new Paard(this,schaakstuk.ZWART);
-        schaakstuk koningin = new Koningin(this,schaakstuk.WIT);
-        schaakstuk loper = new Loper(this,schaakstuk.WIT);
-        addGameObject(koning, 100, 200);
-        addGameObject(paard, 240, 200);
-        addGameObject(toren, 200, 200);
-        addGameObject(koningin, 320, 200);
-        addGameObject(loper, 400, 200);
+        schaakbord shaakbord = new schaakbord(this);
+        shaakbord.startGame();
        
         initializeTileMap();
 
