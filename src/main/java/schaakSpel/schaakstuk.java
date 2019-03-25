@@ -22,7 +22,7 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	}
 
 	protected schaakSpel world;
-	private boolean selected = false;
+	protected boolean selected = false;
 	
 	
 	
