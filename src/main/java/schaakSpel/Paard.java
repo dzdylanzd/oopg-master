@@ -1,5 +1,6 @@
 package schaakSpel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nl.han.ica.oopg.collision.CollidedTile;
@@ -11,12 +12,14 @@ import schaakSpel.tiles.SchaakbordTile;
 
 public class Paard extends schaakstuk {
 
-	public boolean test;
+	private boolean getekend = false;
+	ArrayList<mogenlijkePlek> plekken = new ArrayList<mogenlijkePlek>();
 	
 	public Paard(schaakSpel world,String text) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Knight.png"));
 		
 		this.world = world;
+		
 		
 	}
 
@@ -43,8 +46,36 @@ public class Paard extends schaakstuk {
 	public void update() {
 		// TODO Auto-generated method stub
 	if(selected == true) {
-			System.out.println("ik mag 2 vakje omhog en 1 naar rechts of links en mag over dingen heen springen");
+		if(!getekend) {
+maakPlekken();
+
+getekend = !getekend;
+		}	
+	}
+	if(selected == false) {
+		getekend = false;
+		for(mogenlijkePlek plek: plekken ) {
+		world.deleteGameObject(plek);
+		}
+		plekken.clear();
 	}
 	}
+	
+	private void maakPlekken() {
+		float x = getX()-15;
+		float y = getY()-15;
+		float tileSize = 80;
+		int aantalPlaatzen = 8;
+		float X[] = {x-tileSize*2,x-tileSize*2};
+		float Y[] = {y-tileSize*1,y+tileSize*1};
+		
+		for(int i=0; i < X.length; i++) {
+		mogenlijkePlek plek = new mogenlijkePlek(world);
+		plekken.add(plek);	
+		world.addGameObject(plek,X[i],Y[i]);
+		}
+
+	}
+	
 
 }
