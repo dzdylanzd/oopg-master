@@ -11,10 +11,13 @@ import schaakSpel.tiles.SchaakbordTile;
 
 public class Paard extends schaakstuk {
 
+	public boolean test;
+	
 	public Paard(schaakSpel world,String text) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Knight.png"));
 		
 		this.world = world;
+		
 	}
 
 	@Override
@@ -39,7 +42,9 @@ public class Paard extends schaakstuk {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+//		if(selected == true) {
+			System.out.println(selected);
+//		}
 	}
 
 }
