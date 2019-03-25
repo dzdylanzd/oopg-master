@@ -23,13 +23,16 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 
 	protected schaakSpel world;
 	protected boolean selected = false;
-	
+	protected float prevX;
+	protected int prevY;
 	
 	
 	public void mouseReleased(int x, int y, int button) {
 		if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == false) {
 
 			selected=true;
+			prevX = this.getX();
+			prevX = this.getY();
 
 	}else {selected=false;
 
