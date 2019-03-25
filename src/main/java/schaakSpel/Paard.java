@@ -42,9 +42,9 @@ public class Paard extends schaakstuk {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-//		if(selected == true) {
-			System.out.println(selected);
-//		}
+	if(selected == true) {
+			System.out.println("ik mag 2 vakje omhog en 1 naar rechts of links en mag over dingen heen springen");
+	}
 	}
 
 }
