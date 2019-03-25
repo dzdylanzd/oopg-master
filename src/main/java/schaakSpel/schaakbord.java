@@ -1,7 +1,7 @@
 package schaakSpel;
 
 import java.util.ArrayList;
-import Pion;
+
 
 public class schaakbord {
 	
