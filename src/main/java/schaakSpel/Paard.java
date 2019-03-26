@@ -12,8 +12,7 @@ import schaakSpel.tiles.SchaakbordTile;
 
 public class Paard extends schaakstuk {
 
-	private boolean getekend = false;
-	ArrayList<mogenlijkePlek> plekken = new ArrayList<mogenlijkePlek>();
+	
 	
 	public Paard(schaakSpel world,String text) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Knight.png"));
@@ -42,37 +41,22 @@ public class Paard extends schaakstuk {
 	}
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-	if(selected == true) {
-		if(!getekend) {
-maakPlekken();
-
-getekend = !getekend;
-		}	
-	}
-	if(selected == false) {
-		getekend = false;
-		for(mogenlijkePlek plek: plekken ) {
-		world.deleteGameObject(plek);
-		}
-		plekken.clear();
-	}
-	}
 	
-	private void maakPlekken() {
+	
+	@Override
+	protected void maakPlekken() {
 		float x = getX()-15;
 		float y = getY()-15;
 		float tileSize = 80;
-		int aantalPlaatzen = 8;
-		float X[] = {x-tileSize*2,x-tileSize*2};
-		float Y[] = {y-tileSize*1,y+tileSize*1};
+		float X[] = {-2,-2,-1,1,2,2,-1,1};
+		float Y[] = {-1,1,2,2,-1,1,-2,-2};
 		
 		for(int i=0; i < X.length; i++) {
+			if(x+tileSize*X[i] < 800-tileSize && x+tileSize*X[i] > tileSize && y+tileSize*Y[i] < 800-tileSize && y+tileSize*Y[i] > tileSize  ) {
 		mogenlijkePlek plek = new mogenlijkePlek(world);
 		plekken.add(plek);	
-		world.addGameObject(plek,X[i],Y[i]);
+		world.addGameObject(plek,x+tileSize*X[i],y+tileSize*Y[i]);
+			}
 		}
 
 	}
