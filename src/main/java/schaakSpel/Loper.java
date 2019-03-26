@@ -37,9 +37,11 @@ public class Loper extends schaakstuk {
 	}
 
 	@Override
-	public void update() {
+	protected void maakPlekken() {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
