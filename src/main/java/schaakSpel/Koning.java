@@ -21,11 +21,7 @@ public class Koning extends schaakstuk {
 
 	
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
@@ -44,6 +40,16 @@ public class Koning extends schaakstuk {
 	        }
 	}
 	}
+	}
+
+
+
+
+
+	@Override
+	protected void maakPlekken() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
