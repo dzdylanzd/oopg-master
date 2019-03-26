@@ -1,32 +1,23 @@
 package schaakSpel;
 
 import schaakSpel.tiles.SchaakbordTile;
-import nl.han.ica.oopg.dashboard.Dashboard;
+
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
-import nl.han.ica.oopg.persistence.FilePersistence;
-import nl.han.ica.oopg.persistence.IPersistence;
 import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.tile.TileMap;
 import nl.han.ica.oopg.tile.TileType;
-import nl.han.ica.oopg.view.EdgeFollowingViewport;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
-
-
-/**
- * @author Ralph Niels
- */
 public class schaakSpel extends GameEngine {
-
- 
-
+	
+	private Sound pickupSound;
+	private Sound putdownSound;
 
     public static void main(String[] args) {
         String[] processingArgs = {"schaakSpel.schaakSpel"};
         schaakSpel mySketch = new schaakSpel();
-
         PApplet.runSketch(processingArgs, mySketch);
     }
 
@@ -36,23 +27,12 @@ public class schaakSpel extends GameEngine {
      */
     @Override
     public void setupGame() {
-
         int worldWidth = 800;
-        int worldHeight = 800;
-
-//        SchaakstukBlackKoning koning = new SchaakstukBlackKoning(this,"black");
-//        SchaakstukBlackKoning koning2 = new SchaakstukBlackKoning(this,"white");
-//        addGameObject(koning, 200, 200);
-//        addGameObject(koning2, 400, 200);
-        
-        schaakbord shaakbord = new schaakbord(this);
-        shaakbord.startGame();
-       
+        int worldHeight = 800;    
+        initializeSounds();
+        schaakbord shaakbord = new schaakbord(this,pickupSound,putdownSound);
+        shaakbord.startGame();       
         initializeTileMap();
-
-
-
-
         createViewWithoutViewport(worldWidth, worldHeight);
     }
 
@@ -79,15 +59,7 @@ public class schaakSpel extends GameEngine {
      * @param screenHeight Hoogte van het scherm
      * @param zoomFactor   Factor waarmee wordt ingezoomd
      */
-   
 
-
-    /**
-     * Maakt de spelobjecten aan
-     */
-    private void createObjects() {
-
-    }
 
 
     /**
@@ -125,8 +97,10 @@ public class schaakSpel extends GameEngine {
     public void update() {
     }
 
-  
-
+    private void initializeSounds() {
+    	pickupSound = new Sound(this, "src/main/java/schaakSpel/media/pickup.mp3");
+    	putdownSound = new Sound(this, "src/main/java/schaakSpel/media/putdown.mp3");
     }
 
+}
 
