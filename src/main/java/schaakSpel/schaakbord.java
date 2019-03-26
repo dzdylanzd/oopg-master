@@ -1,19 +1,20 @@
 package schaakSpel;
 
 import java.util.ArrayList;
+import nl.han.ica.oopg.sound.Sound;
 
-
-public class schaakbord {
+public class schaakbord {	
 	
-	private int tileLength = 80;
-	
+	private int tileLength = 80;	
 	ArrayList<schaakstuk> schaakstukken = new ArrayList<schaakstuk>();
 	private schaakSpel world;
+	private Sound pickupSound;
+	private Sound putdownSound;
 	
-	schaakbord(schaakSpel world){
-		
-		this.world = world;
-		
+	public schaakbord(schaakSpel world, Sound pickupSound, Sound putdownSound){
+		this.pickupSound=pickupSound;
+		this.putdownSound=putdownSound;
+		this.world = world;		
 	}
 	
 	public void startGame() {
@@ -21,82 +22,80 @@ public class schaakbord {
 		 torens();
 		 paarden();
 		 lopers();
-		 koningEnKonining();
-		
+		 koningEnKonining();		
 	}
 	
 	public void pionnen() {
 		for(int i=0; i<8; i++) {
-			schaakstuk pion = new Pion(world,schaakstuk.ZWART);
+			schaakstuk pion = new Pion(world,schaakstuk.ZWART,pickupSound,putdownSound);
 			schaakstukken.add(pion);
 	        world.addGameObject(pion, tileLength*(i+1), 2*tileLength);
 		}
 		for(int i=0; i<8; i++) {
-			schaakstuk pion = new Pion(world,schaakstuk.WIT);
+			schaakstuk pion = new Pion(world,schaakstuk.WIT,pickupSound,putdownSound);
 			schaakstukken.add(pion);
 	        world.addGameObject(pion, tileLength*(i+1), 7*tileLength);
 		}
 	}
 	
 	public void torens() {
-		schaakstuk torenL = new Toren(world,schaakstuk.ZWART);
+		schaakstuk torenL = new Toren(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(torenL);
 		world.addGameObject(torenL, tileLength*1, 1*tileLength);
-		schaakstuk torenR = new Toren(world,schaakstuk.ZWART);
+		schaakstuk torenR = new Toren(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(torenR);
 		world.addGameObject(torenR, tileLength*8, 1*tileLength);
-		torenL = new Toren(world,schaakstuk.WIT);
+		torenL = new Toren(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(torenL);
 		world.addGameObject(torenL, tileLength*1, 8*tileLength);
-	 torenR = new Toren(world,schaakstuk.WIT);
+	 torenR = new Toren(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(torenR);
 		world.addGameObject(torenR, tileLength*8, 8*tileLength);
 	}
 	
 	public void paarden() {
-		schaakstuk paardL = new Paard(world,schaakstuk.ZWART);
+		schaakstuk paardL = new Paard(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(paardL);
 		world.addGameObject(paardL, tileLength*2, 1*tileLength);
-		schaakstuk paardR = new Paard(world,schaakstuk.ZWART);
+		schaakstuk paardR = new Paard(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(paardR);
 		world.addGameObject(paardR, tileLength*7, 1*tileLength);
-		paardL = new Paard(world,schaakstuk.WIT);
+		paardL = new Paard(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(paardL);
 		world.addGameObject(paardL, tileLength*2, 8*tileLength);
-	 paardR = new Paard(world,schaakstuk.WIT);
+	 paardR = new Paard(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(paardR);
 		world.addGameObject(paardR, tileLength*7, 8*tileLength);
 	}
 	
 	public void lopers() {
-		schaakstuk loperL = new Loper(world,schaakstuk.ZWART);
+		schaakstuk loperL = new Loper(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(loperL);
 		world.addGameObject(loperL, tileLength*3, 1*tileLength);
-		schaakstuk loperR = new Loper(world,schaakstuk.ZWART);
+		schaakstuk loperR = new Loper(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(loperR);
 		world.addGameObject(loperR, tileLength*6, 1*tileLength);
-		loperL = new Loper(world,schaakstuk.WIT);
+		loperL = new Loper(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(loperL);
 		world.addGameObject(loperL, tileLength*3, 8*tileLength);
-	 loperR = new Loper(world,schaakstuk.WIT);
+	 loperR = new Loper(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(loperR);
 		world.addGameObject(loperR, tileLength*6, 8*tileLength);
 	}
 	
 	public void koningEnKonining() {
-		schaakstuk koning = new Koning(world,schaakstuk.ZWART);
+		schaakstuk koning = new Koning(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(koning);
 		world.addGameObject(koning, tileLength*5, 1*tileLength);
-		schaakstuk koningin = new Koningin(world,schaakstuk.ZWART);
+		schaakstuk koningin = new Koningin(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(koningin);
 		world.addGameObject(koningin, tileLength*4, 1*tileLength);
-		koning = new Koning(world,schaakstuk.WIT);
+		koning = new Koning(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(koning);
 		world.addGameObject(koning, tileLength*5, 8*tileLength);
-		koningin = new Koningin(world,schaakstuk.WIT);
+		koningin = new Koningin(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(koningin);
-		world.addGameObject(koningin, tileLength*4, 8*tileLength);
-		
+		world.addGameObject(koningin, tileLength*4, 8*tileLength);		
 	}
 
 
