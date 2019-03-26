@@ -1,5 +1,6 @@
 package schaakSpel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nl.han.ica.oopg.collision.CollidedTile;
@@ -16,6 +17,8 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	
 	public final static String ZWART = "black";
 	public final static String WIT = "white";
+	protected boolean getekend = false;
+	protected ArrayList<mogenlijkePlek> plekken = new ArrayList<mogenlijkePlek>();
 
 	public schaakstuk(Sprite sprite) {
 		super(sprite);
@@ -23,20 +26,21 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 
 	protected schaakSpel world;
 	protected boolean selected = false;
-	protected float prevX;
-	protected int prevY;
+
 	
 	
 	public void mouseReleased(int x, int y, int button) {
 		if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == false) {
 
 			selected=true;
-			prevX = this.getX();
-			prevX = this.getY();
-
+			
 	}else {selected=false;
 
 	}
+		
+		
+		
+		 
 
 	}
 	public void mouseMoved(int x, int y) {
@@ -46,6 +50,29 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		}
 		
 	}
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+	if(selected == true) {
+		if(!getekend) {
+maakPlekken();
+
+getekend = true;
+		}	
+	}
+	if(selected == false) {
+		getekend = false;
+		for(mogenlijkePlek plek: plekken ) {
+		world.deleteGameObject(plek);
+		}
+		plekken.clear();
+	}
+	}
+	
+	protected abstract void maakPlekken();
+	
+	
 
 
 	
