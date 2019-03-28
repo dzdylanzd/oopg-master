@@ -23,6 +23,7 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	private Sound pickupSound;
 	private Sound putdownSound;
 	protected schaakSpel world;
+	protected String ZofW;
 
 	public schaakstuk(Sprite sprite, Sound pickupSound, Sound putdownSound) {
 		super(sprite);
@@ -84,6 +85,11 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	        }
 	}
 	}
-	}	
+	}
+	
+	public String getZW(){
+		return ZofW;
+		
+	}
 	
 }
