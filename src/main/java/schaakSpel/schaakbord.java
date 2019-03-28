@@ -3,10 +3,10 @@ package schaakSpel;
 import java.util.ArrayList;
 import nl.han.ica.oopg.sound.Sound;
 
-public class schaakbord {	
+public class schaakbord  {	
 	
 	private int tileLength = 80;	
-	ArrayList<schaakstuk> schaakstukken = new ArrayList<schaakstuk>();
+	static ArrayList<schaakstuk> schaakstukken = new ArrayList<schaakstuk>();
 	private schaakSpel world;
 	private Sound pickupSound;
 	private Sound putdownSound;
@@ -18,14 +18,14 @@ public class schaakbord {
 	}
 	
 	public void startGame() {
+		lopers();
 		pionnen();
 		 torens();
 		 paarden();
-		 lopers();
 		 koningEnKonining();		
 	}
 	
-	public void pionnen() {
+	private void pionnen() {
 		for(int i=0; i<8; i++) {
 			schaakstuk pion = new Pion(world,schaakstuk.ZWART,pickupSound,putdownSound);
 			schaakstukken.add(pion);
@@ -38,7 +38,7 @@ public class schaakbord {
 		}
 	}
 	
-	public void torens() {
+	private void torens() {
 		schaakstuk torenL = new Toren(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(torenL);
 		world.addGameObject(torenL, tileLength*1, 1*tileLength);
@@ -53,7 +53,7 @@ public class schaakbord {
 		world.addGameObject(torenR, tileLength*8, 8*tileLength);
 	}
 	
-	public void paarden() {
+	private void paarden() {
 		schaakstuk paardL = new Paard(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(paardL);
 		world.addGameObject(paardL, tileLength*2, 1*tileLength);
@@ -68,7 +68,7 @@ public class schaakbord {
 		world.addGameObject(paardR, tileLength*7, 8*tileLength);
 	}
 	
-	public void lopers() {
+	private void lopers() {
 		schaakstuk loperL = new Loper(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(loperL);
 		world.addGameObject(loperL, tileLength*3, 1*tileLength);
@@ -83,7 +83,7 @@ public class schaakbord {
 		world.addGameObject(loperR, tileLength*6, 8*tileLength);
 	}
 	
-	public void koningEnKonining() {
+	private void koningEnKonining() {
 		schaakstuk koning = new Koning(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(koning);
 		world.addGameObject(koning, tileLength*5, 1*tileLength);
@@ -97,6 +97,42 @@ public class schaakbord {
 		schaakstukken.add(koningin);
 		world.addGameObject(koningin, tileLength*4, 8*tileLength);		
 	}
+	
+	public static Boolean IsHierSchaakstuk(int vergelijkX, int vergelijkY) {
+		int X;
+		int Y;
+		for (schaakstuk schaakstuk : schaakstukken)
+		{ 
+		    X = (int) schaakstuk.getX();
+		    Y = (int) schaakstuk.getY();
+		   
+		    
+		    if(X == vergelijkX && Y == vergelijkY) {
+		    	return true;
+		    }
+		}
+	
+	return false;
+	}
+	
+	public static String WelkeKleur(int vergelijkX, int vergelijkY) {
+		int X;
+		int Y;
+		for (schaakstuk schaakstuk : schaakstukken)
+		{ 
+		    X = (int) schaakstuk.getX();
+		    Y = (int) schaakstuk.getY();
+		   
+		    
+		    if(X == vergelijkX && Y == vergelijkY) {
+		    	return schaakstuk.getZW();
+		    }
+		}
+	
+	return "niks";
+	}
+	
+	
 
 
 }
