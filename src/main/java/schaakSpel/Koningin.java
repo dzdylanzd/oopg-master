@@ -8,6 +8,8 @@ public class Koningin extends schaakstuk {
 	public Koningin(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Queen.png"),pickupSound,putdownSound);
 		this.world = world;
+		ZofW = text;
+		
 	}
 
 	@Override
@@ -15,16 +17,34 @@ public class Koningin extends schaakstuk {
 		float x = getX()-15;
 		float y = getY()-15;
 		float tileSize = 80;
-		float X[] = {-1,1,0,0};
-		float Y[] = {0,0,-1,1};
-		
-		for(int i=0; i < X.length; i++) {
-			if(x+tileSize*X[i] < 800-tileSize && x+tileSize*X[i] > tileSize && y+tileSize*Y[i] < 800-tileSize && y+tileSize*Y[i] > tileSize  ) {
+		int mapSize = 800;
+		int directionX[] = {-1,1,0,0,-1,1,-1,1};
+		int directionY[] = {0,0,1,-1,-1,-1,1,1};
+		// && y+tileSize*0 < 800-tileSize && y+tileSize*0 > tileSize 
+		//links boven
+		for(int j=0;j<directionX.length;j++) {
+		for(int i=1; i < 8; i++) {
+			int directionX1 = directionX[j]*i;
+			int directionY1 = directionY[j]*i;
+			int intx = (int) (getX() + tileSize*directionX1) ;
+			int inty = (int) (getY() + tileSize*directionY1);
+			if(x+tileSize*directionX1 < mapSize-tileSize && x+tileSize*directionX1 > tileSize && y+tileSize*directionY1 < 800-tileSize && y+tileSize*directionY1 > tileSize && ZofW != schaakbord.WelkeKleur(intx,inty)  ) {
+					
+				
 		mogenlijkePlek plek = new mogenlijkePlek(world);
 		plekken.add(plek);	
-		world.addGameObject(plek,x+tileSize*X[i],y+tileSize*Y[i]);
+		world.addGameObject(plek,x+tileSize*directionX1,y+tileSize*directionY1);
+				
+		
+		
+			}
+			if(schaakbord.IsHierSchaakstuk(intx,inty)){
+				i = 8;
+				
 			}
 		}
+		}
+		
 	}
 
 	
