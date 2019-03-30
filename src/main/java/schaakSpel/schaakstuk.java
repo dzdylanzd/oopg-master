@@ -26,6 +26,11 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	protected schaakSpel world;
 	protected String ZofW;
 	int tileSize = 80;
+	boolean deleted = false;
+	
+	public boolean getDeleted() {
+		return deleted;
+	}
 
 
 	public schaakstuk(Sprite sprite, Sound pickupSound, Sound putdownSound) {
@@ -57,7 +62,10 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	public void keyPressed(int keyCode, char key) {
 		if(selected==true) {
 		if(key=='d') {
-			
+			this.deleted = true;
+			System.out.println(deleted);
+			this.setX(0);
+			this.setY(0);
 		world.deleteGameObject(this);
 		
 		for(mogenlijkePlek plek: plekken ) {
