@@ -19,6 +19,10 @@ public class Paard extends schaakstuk {
 		float X[] = {-2,-2,-1,1,2,2,-1,1};
 		float Y[] = {-1,1,2,2,-1,1,-2,-2};
 		
+		mogenlijkePlek plekZelf = new mogenlijkePlek(world);
+		plekken.add(plekZelf);	
+		world.addGameObject(plekZelf,x,y);
+		
 		for(int i=0; i < X.length; i++) {
 			int intx = (int) (getX() + tileSize*X[i]) ;
 			int inty = (int) (getY() + tileSize*Y[i]);
