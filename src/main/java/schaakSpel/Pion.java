@@ -5,8 +5,7 @@ import nl.han.ica.oopg.sound.Sound;
 
 public class Pion extends schaakstuk {
 	
-	private String ZW;
-	private boolean verplaatst = false;	
+		private boolean verplaatst = false;	
 
 	public Pion(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Pawn.png"),pickupSound,putdownSound);
