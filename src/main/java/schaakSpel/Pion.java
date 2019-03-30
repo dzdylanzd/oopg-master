@@ -25,6 +25,10 @@ public class Pion extends schaakstuk {
 		int realY = (int) getY();
 		int tileSize = 80;
 		
+		mogenlijkePlek plekZelf = new mogenlijkePlek(world);
+		plekken.add(plekZelf);	
+		world.addGameObject(plekZelf,x,y);
+		
 		if(ZofW == schaakstuk.WIT) {
 		if(!verplaatst) {
 			if(x < 800-tileSize && x > tileSize && y+tileSize*-2 < 800-tileSize && y+tileSize*-2 > tileSize  ) {
