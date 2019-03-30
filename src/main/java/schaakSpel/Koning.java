@@ -17,8 +17,8 @@ public class Koning extends schaakstuk {
 		float x = getX()-15;
 		float y = getY()-15;
 		float tileSize = 80;
-		float X[] = {-1,1,0,0};
-		float Y[] = {0,0,-1,1};
+		float X[] = {-1,1,0,0,-1,1,1,-1};
+		float Y[] = {0,0,-1,1,-1,1,-1,1};
 		
 		
 		mogenlijkePlek plekZelf = new mogenlijkePlek(world);
@@ -35,6 +35,17 @@ public class Koning extends schaakstuk {
 			}
 		}
 	}
-	
-	
+	@Override
+	public void keyPressed(int keyCode, char key) {
+		if(selected==true) {
+		if(key=='d') {
+		System.out.println("Kanker");	
+		world.deleteGameObject(this);
+		
+		for(mogenlijkePlek plek: plekken ) {
+			world.deleteGameObject(plek);
+		}
+	}
+	}
+	}
 }
