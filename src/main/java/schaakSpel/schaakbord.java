@@ -131,7 +131,7 @@ public class schaakbord  {
 	
 	return "niks";
 	}
-	
+
 	
 
 
