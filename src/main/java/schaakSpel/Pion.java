@@ -35,6 +35,9 @@ public class Pion extends schaakstuk {
 		mogenlijkePlek plek = new mogenlijkePlek(world);
 		plekken.add(plek);	
 		world.addGameObject(plek,x,y+tileSize*-2);
+		mogenlijkePlek plek2 = new mogenlijkePlek(world);
+		plekken.add(plek2);	
+		world.addGameObject(plek2,x,y+tileSize*-1);
 		verplaatst = true;
 			}
 		} else if(verplaatst) {
@@ -62,9 +65,12 @@ public class Pion extends schaakstuk {
 			plekken.add(plek);	
 			world.addGameObject(plek,x,y+tileSize*2);
 			verplaatst = true;
+			mogenlijkePlek plek2 = new mogenlijkePlek(world);
+			plekken.add(plek2);	
+			world.addGameObject(plek2,x,y+tileSize*1);
 				}
 			} else if(verplaatst) {
-				if(x < 800-tileSize && x > tileSize && y+tileSize*1 < 800-tileSize && y+tileSize*1 > tileSize && !schaakbord.IsHierSchaakstuk(realX,realY-tileSize)  ) {
+				if(x < 800-tileSize && x > tileSize && y+tileSize*1 < 800-tileSize && y+tileSize*1 > tileSize && !schaakbord.IsHierSchaakstuk(realX,realY+tileSize)  ) {
 			mogenlijkePlek plek = new mogenlijkePlek(world);
 			plekken.add(plek);	
 			world.addGameObject(plek,x,y+tileSize*1);
