@@ -24,26 +24,49 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	private Sound putdownSound;
 	protected schaakSpel world;
 	protected String ZofW;
+	int tileSize = 80;
+
 
 	public schaakstuk(Sprite sprite, Sound pickupSound, Sound putdownSound) {
 		super(sprite);
 		this.pickupSound=pickupSound;
 		this.putdownSound=putdownSound;
+
+
+		
+
+		
+		
 	}
+
 	
 	protected abstract void maakPlekken();	
 	
-	public void mouseReleased(int x, int y, int button) {
+	public void mouseClicked(int x, int y, int button) {
+		
 		if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == false) {
-		selected=true;
+		selected=true;		
 		pickupSound.rewind();
-		pickupSound.play();	
-	}else if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == true){
-		selected=false;
+		pickupSound.play();			
+	}else if(mogenlijkePlek((int) getX(),(int) getY()) == true){
+		selected=false;				
 		putdownSound.rewind();
-		putdownSound.play();
+		putdownSound.play();	
+		selected=false;
+		}
 	}
-}
+			
+		
+	
+		
+	
+		
+	
+		
+	
+	
+	
+	
 	
 	public void mouseMoved(int x, int y) {
 		if(selected==true) {
@@ -54,19 +77,21 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	
 	@Override
 	public void update() {
-		if(selected == true) {
+		if(selected == true) {	
 		if(!getekend) {
         maakPlekken();
         getekend = true;
 		}	
 	}
-	if(selected == false) {
+	if(selected == false) {		
+		
 		getekend = false;
 		for(mogenlijkePlek plek: plekken ) {
 		world.deleteGameObject(plek);
 		}
 		plekken.clear();
 	}
+	
 	}
 
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
@@ -79,6 +104,12 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	                 vector = world.getTileMap().getTilePixelLocation(ct.getTile());
 	              setX((vector.x+getWidth()/3));
 	              setY((vector.y+getHeight()/3));
+	         if(selected==false) {
+	        	 SchaakbordTile.bevatSchaakstuk=true;
+	         }
+	         if(selected==true) {
+	        	 SchaakbordTile.bevatSchaakstuk=false;
+	         }
 	             } catch (TileNotFoundException e) {
 	                 e.printStackTrace();
 	             }
@@ -86,10 +117,28 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	}
 	}
 	}
+
+	
 	
 	public String getZW(){
 		return ZofW;
 		
+	}
+	public Boolean mogenlijkePlek(int vergelijkX, int vergelijkY) {
+		int X;
+		int Y;
+		for (mogenlijkePlek plek : plekken)
+		{ 
+		    X = (int) plek.getX();
+		    Y = (int) plek.getY();
+		   
+		    
+		    if(X == vergelijkX-15 && Y == vergelijkY-15) {
+		    	return true;
+		    }
+		}
+	
+	return false;
 	}
 	
 }
