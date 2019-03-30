@@ -12,5 +12,6 @@ public class SchaakbordTile extends Tile {
     public SchaakbordTile(Sprite sprite) {
         super(sprite);
     }
+    public static boolean bevatSchaakstuk=false;
     
 }
