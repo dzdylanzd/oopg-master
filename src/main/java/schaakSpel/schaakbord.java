@@ -107,8 +107,10 @@ public class schaakbord  {
 		    Y = (int) schaakstuk.getY();
 		   
 		    
-		    if(X == vergelijkX && Y == vergelijkY) {
+		    if(X == vergelijkX && Y == vergelijkY && !schaakstuk.getDeleted() ) {
+		    	
 		    	return true;
+		    	
 		    }
 		}
 	
