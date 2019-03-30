@@ -12,8 +12,9 @@ import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.userinput.IMouseInput;
 import processing.core.PVector;
 import schaakSpel.tiles.SchaakbordTile;
+import nl.han.ica.oopg.userinput.IKeyInput;
 
-public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICollidableWithTiles{
+public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICollidableWithTiles,IKeyInput{
 	
 	public final static String ZWART = "black";
 	public final static String WIT = "white";
@@ -30,13 +31,7 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	public schaakstuk(Sprite sprite, Sound pickupSound, Sound putdownSound) {
 		super(sprite);
 		this.pickupSound=pickupSound;
-		this.putdownSound=putdownSound;
-
-
-		
-
-		
-		
+		this.putdownSound=putdownSound;		
 	}
 
 	
@@ -45,11 +40,13 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	public void mouseClicked(int x, int y, int button) {
 		
 		if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == false) {
-		selected=true;		
+		selected=true;
+	
 		pickupSound.rewind();
 		pickupSound.play();			
 	}else if(mogenlijkePlek((int) getX(),(int) getY()) == true){
-		selected=false;				
+		selected=false;		
+		update();
 		putdownSound.rewind();
 		putdownSound.play();	
 		selected=false;
@@ -57,17 +54,19 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	}
 			
 		
-	
+	public void keyPressed(int keyCode, char key) {
+		if(selected==true) {
+		if(key=='d') {
+			
+		world.deleteGameObject(this);
 		
-	
-		
-	
-		
-	
-	
-	
-	
-	
+		for(mogenlijkePlek plek: plekken ) {
+			world.deleteGameObject(plek);
+		}
+	}
+	}
+	}
+			
 	public void mouseMoved(int x, int y) {
 		if(selected==true) {
 			setX(x-getWidth()/2);
@@ -84,7 +83,6 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		}	
 	}
 	if(selected == false) {		
-		
 		getekend = false;
 		for(mogenlijkePlek plek: plekken ) {
 		world.deleteGameObject(plek);
