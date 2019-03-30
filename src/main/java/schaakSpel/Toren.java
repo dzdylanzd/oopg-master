@@ -19,8 +19,10 @@ public class Toren extends schaakstuk {
 		int mapSize = 800;
 		int directionX[] = {-1,1,0,0};
 		int directionY[] = {0,0,1,-1};
-		// && y+tileSize*0 < 800-tileSize && y+tileSize*0 > tileSize 
-		//links boven
+	
+		mogenlijkePlek plekZelf = new mogenlijkePlek(world);
+		plekken.add(plekZelf);	
+		world.addGameObject(plekZelf,x,y);
 		for(int j=0;j<directionX.length;j++) {
 		for(int i=1; i < 8; i++) {
 			int directionX1 = directionX[j]*i;
