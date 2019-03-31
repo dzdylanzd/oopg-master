@@ -1,7 +1,7 @@
 package schaakSpel;
 
 import schaakSpel.tiles.SchaakbordTile;
-
+import nl.han.ica.oopg.dashboard.Dashboard;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.sound.Sound;
@@ -14,6 +14,10 @@ public class schaakSpel extends GameEngine {
 	
 	private Sound pickupSound;
 	private Sound putdownSound;
+	private Sound gewonnenSound;
+	private TextObject witText;
+	private TextObject zwartText;
+	 private int bubblesPopped;
 
     public static void main(String[] args) {
         String[] processingArgs = {"schaakSpel.schaakSpel"};
@@ -30,10 +34,14 @@ public class schaakSpel extends GameEngine {
         int worldWidth = 800;
         int worldHeight = 800;    
         initializeSounds();
-        schaakbord shaakbord = new schaakbord(this,pickupSound,putdownSound);
+       schaakbord shaakbord = new schaakbord(this,pickupSound,putdownSound,gewonnenSound);
         shaakbord.startGame();       
-        initializeTileMap();
+       initializeTileMap();
         createViewWithoutViewport(worldWidth, worldHeight);
+        createDashboardWit(200, 80);
+        createDashboardZwart(worldWidth, 80);
+        refreshDasboardText() ;
+
     }
 
     /**
@@ -60,7 +68,18 @@ public class schaakSpel extends GameEngine {
      * @param zoomFactor   Factor waarmee wordt ingezoomd
      */
 
-
+    private void createDashboardWit(int dashboardWidth, int dashboardHeight) {
+        Dashboard dashboardWit = new Dashboard(40, 10, dashboardWidth, dashboardHeight);
+        witText = new TextObject("");
+        dashboardWit.addGameObject(witText);
+        addDashboard(dashboardWit);
+    }
+    private void createDashboardZwart(int dashboardWidth, int dashboardHeight) {
+        Dashboard dashboardZwart = new Dashboard(270, 10, dashboardWidth, dashboardHeight);
+        zwartText = new TextObject("");
+        dashboardZwart.addGameObject(zwartText);
+        addDashboard(dashboardZwart);
+    }
 
     /**
      * Initialiseert de tilemap
@@ -100,7 +119,12 @@ public class schaakSpel extends GameEngine {
     private void initializeSounds() {
     	pickupSound = new Sound(this, "src/main/java/schaakSpel/media/pickup.mp3");
     	putdownSound = new Sound(this, "src/main/java/schaakSpel/media/putdown.mp3");
+    	gewonnenSound = new Sound(this, "src/main/java/schaakSpel/media/gewonnen.mp3");
     }
-
+  
+    private void refreshDasboardText() {
+        witText.setText("Wit: 20:00");
+        zwartText.setText("Zwart: 20:00");
+    }
 }
 
