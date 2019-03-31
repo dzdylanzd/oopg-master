@@ -10,14 +10,14 @@ import nl.han.ica.oopg.tile.TileType;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
-public class schaakSpel extends GameEngine {
+public class schaakSpel extends GameEngine{
 	
 	private Sound pickupSound;
 	private Sound putdownSound;
 	private Sound gewonnenSound;
-	private TextObject witText;
-	private TextObject zwartText;
-	 private int bubblesPopped;
+	private Klok witText;
+	private Klok zwartText;
+	
 
     public static void main(String[] args) {
         String[] processingArgs = {"schaakSpel.schaakSpel"};
@@ -40,7 +40,8 @@ public class schaakSpel extends GameEngine {
         createViewWithoutViewport(worldWidth, worldHeight);
         createDashboardWit(200, 80);
         createDashboardZwart(worldWidth, 80);
-        refreshDasboardText() ;
+
+      
 
     }
 
@@ -70,13 +71,14 @@ public class schaakSpel extends GameEngine {
 
     private void createDashboardWit(int dashboardWidth, int dashboardHeight) {
         Dashboard dashboardWit = new Dashboard(40, 10, dashboardWidth, dashboardHeight);
-        witText = new TextObject("");
+        witText = new Klok(this, "Wit",true);
         dashboardWit.addGameObject(witText);
         addDashboard(dashboardWit);
+        
     }
     private void createDashboardZwart(int dashboardWidth, int dashboardHeight) {
         Dashboard dashboardZwart = new Dashboard(270, 10, dashboardWidth, dashboardHeight);
-        zwartText = new TextObject("");
+        zwartText = new Klok(this, "Zwart",false);
         dashboardZwart.addGameObject(zwartText);
         addDashboard(dashboardZwart);
     }
@@ -114,7 +116,11 @@ public class schaakSpel extends GameEngine {
 
     @Override
     public void update() {
+  
     }
+    	
+    	    
+    
 
     private void initializeSounds() {
     	pickupSound = new Sound(this, "src/main/java/schaakSpel/media/pickup.mp3");
@@ -122,9 +128,6 @@ public class schaakSpel extends GameEngine {
     	gewonnenSound = new Sound(this, "src/main/java/schaakSpel/media/gewonnen.mp3");
     }
   
-    private void refreshDasboardText() {
-        witText.setText("Wit: 20:00");
-        zwartText.setText("Zwart: 20:00");
-    }
-}
 
+    }
+	
