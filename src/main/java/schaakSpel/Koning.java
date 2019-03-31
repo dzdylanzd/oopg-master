@@ -5,9 +5,10 @@ import nl.han.ica.oopg.sound.Sound;
 
 
 public class Koning extends schaakstuk {
-	
-	public Koning(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
+	private Sound gewonnenSound;
+	public Koning(schaakSpel world,String text, Sound pickupSound, Sound putdownSound, Sound gewonnenSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "King.png"),pickupSound,putdownSound);
+		this.gewonnenSound=gewonnenSound;
 		this.world = world;
 		ZofW = text;
 	}
@@ -39,7 +40,8 @@ public class Koning extends schaakstuk {
 	public void keyPressed(int keyCode, char key) {
 		if(selected==true) {
 		if(key=='d') {
-		System.out.println("Kanker");	
+	    gewonnenSound.rewind();	
+		gewonnenSound.play();	
 		world.deleteGameObject(this);
 		
 		for(mogenlijkePlek plek: plekken ) {
