@@ -10,10 +10,12 @@ public class schaakbord  {
 	private schaakSpel world;
 	private Sound pickupSound;
 	private Sound putdownSound;
+	private Sound gewonnenSound;
 	
-	public schaakbord(schaakSpel world, Sound pickupSound, Sound putdownSound){
+	public schaakbord(schaakSpel world, Sound pickupSound, Sound putdownSound, Sound gewonnenSound){
 		this.pickupSound=pickupSound;
 		this.putdownSound=putdownSound;
+		this.gewonnenSound=gewonnenSound;
 		this.world = world;		
 	}
 	
@@ -22,7 +24,9 @@ public class schaakbord  {
 		pionnen();
 		 torens();
 		 paarden();
-		 koningEnKonining();		
+		 koningEnKonining();
+	
+		
 	}
 	
 	private void pionnen() {
@@ -84,13 +88,13 @@ public class schaakbord  {
 	}
 	
 	private void koningEnKonining() {
-		schaakstuk koning = new Koning(world,schaakstuk.ZWART,pickupSound,putdownSound);
+		schaakstuk koning = new Koning(world,schaakstuk.ZWART,pickupSound,putdownSound,gewonnenSound);
 		schaakstukken.add(koning);
 		world.addGameObject(koning, tileLength*5, 1*tileLength);
 		schaakstuk koningin = new Koningin(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(koningin);
 		world.addGameObject(koningin, tileLength*4, 1*tileLength);
-		koning = new Koning(world,schaakstuk.WIT,pickupSound,putdownSound);
+		koning = new Koning(world,schaakstuk.WIT,pickupSound,putdownSound,gewonnenSound);
 		schaakstukken.add(koning);
 		world.addGameObject(koning, tileLength*5, 8*tileLength);
 		koningin = new Koningin(world,schaakstuk.WIT,pickupSound,putdownSound);
