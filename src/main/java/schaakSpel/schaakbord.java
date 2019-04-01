@@ -5,13 +5,13 @@ import nl.han.ica.oopg.sound.Sound;
 
 public class schaakbord  {	
 	
-	private int tileLength = 80;	
+	private static int tileLength = 80;	
 	static ArrayList<schaakstuk> schaakstukken = new ArrayList<schaakstuk>();
 	static ArrayList<Klok> Klokken = new ArrayList<Klok>();
-	private schaakSpel world;
-	private Sound pickupSound;
-	private Sound putdownSound;
-	private Sound gewonnenSound;
+	private static schaakSpel world;
+	private static Sound pickupSound;
+	private static Sound putdownSound;
+	private static Sound gewonnenSound;
 	
 	public schaakbord(schaakSpel world, Sound pickupSound, Sound putdownSound, Sound gewonnenSound){
 		this.pickupSound=pickupSound;
@@ -20,7 +20,7 @@ public class schaakbord  {
 		this.world = world;		
 	}
 	
-	public void startGame() {
+	public static void startGame() {
 		lopers();
 		pionnen();
 		 torens();
@@ -31,7 +31,14 @@ public class schaakbord  {
 		
 	}
 	
-	private void pionnen() {
+	public static void restart() {
+		
+			world.deleteAllGameOBjects();
+			startGame();
+		
+	}
+	
+	private static void pionnen() {
 		for(int i=0; i<8; i++) {
 			schaakstuk pion = new Pion(world,schaakstuk.ZWART,pickupSound,putdownSound);
 			schaakstukken.add(pion);
@@ -44,7 +51,7 @@ public class schaakbord  {
 		}
 	}
 	
-	private void torens() {
+	private static void torens() {
 		schaakstuk torenL = new Toren(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(torenL);
 		world.addGameObject(torenL, tileLength*1, 1*tileLength);
@@ -59,7 +66,7 @@ public class schaakbord  {
 		world.addGameObject(torenR, tileLength*8, 8*tileLength);
 	}
 	
-	private void paarden() {
+	private static void paarden() {
 		schaakstuk paardL = new Paard(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(paardL);
 		world.addGameObject(paardL, tileLength*2, 1*tileLength);
@@ -74,7 +81,7 @@ public class schaakbord  {
 		world.addGameObject(paardR, tileLength*7, 8*tileLength);
 	}
 	
-	private void lopers() {
+	private static void lopers() {
 		schaakstuk loperL = new Loper(world,schaakstuk.ZWART,pickupSound,putdownSound);
 		schaakstukken.add(loperL);
 		world.addGameObject(loperL, tileLength*3, 1*tileLength);
@@ -89,7 +96,7 @@ public class schaakbord  {
 		world.addGameObject(loperR, tileLength*6, 8*tileLength);
 	}
 	
-	private void koningEnKonining() {
+	private static void koningEnKonining() {
 		schaakstuk koning = new Koning(world,schaakstuk.ZWART,pickupSound,putdownSound,gewonnenSound);
 		schaakstukken.add(koning);
 		world.addGameObject(koning, tileLength*5, 1*tileLength);
@@ -104,7 +111,7 @@ public class schaakbord  {
 		world.addGameObject(koningin, tileLength*4, 8*tileLength);		
 	}
 	
-	public void klokken() {
+	public static void klokken() {
 		 Klok zwartText = new Klok(world, schaakstuk.ZWART,false);
 	        world.addGameObject(zwartText,580, 25);
 	        Klokken.add(zwartText );
@@ -113,9 +120,9 @@ public class schaakbord  {
 	        world.addGameObject(witText,50, 25);	        
 	}
 	
-	public  static boolean isZwartAaan() {
+	public  static boolean isKlokAan(String ZofW) {
 		for (Klok klok : Klokken) {
-			if(klok.welkeKleur() == schaakstuk.ZWART ) {
+			if(klok.welkeKleur() == ZofW) {
 				if(klok.isActive()) {
 					return true;
 				}else return false;
