@@ -15,8 +15,6 @@ public class schaakSpel extends GameEngine{
 	private Sound pickupSound;
 	private Sound putdownSound;
 	private Sound gewonnenSound;
-	private Klok witText;
-	private Klok zwartText;
 	
 
     public static void main(String[] args) {
