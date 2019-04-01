@@ -4,12 +4,13 @@ import nl.han.ica.oopg.alarm.Alarm;
 import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.userinput.IKeyInput;
+import nl.han.ica.oopg.userinput.IMouseInput;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 
 
-public class Klok extends GameObject implements IKeyInput,IAlarmListener{
+public class Klok extends GameObject implements IAlarmListener,IMouseInput{
 	int waarde=00;
 	int maximum=60;
 	int minuten=20;
@@ -31,13 +32,27 @@ public class Klok extends GameObject implements IKeyInput,IAlarmListener{
     
     
     
-	public void keyReleased(int keyCode,char key){
-		if(Active==true) {
-		if(key=='v') {
-			System.out.println(name);
-		}
+	public void keyPressed(int keyCode, char key){
+		
+			if(key==' ') {
+				Active = !Active;
+				
+				startAlarm();
+				
+			}		
+			
+	
 	}
+	
+	public String welkeKleur() {
+		return name;
 	}
+	
+	public boolean isActive() {
+		return Active;
+	}
+	
+	
 		
 	
 
