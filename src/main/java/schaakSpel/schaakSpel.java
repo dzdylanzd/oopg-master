@@ -38,8 +38,7 @@ public class schaakSpel extends GameEngine{
         shaakbord.startGame();       
        initializeTileMap();
         createViewWithoutViewport(worldWidth, worldHeight);
-        createDashboardWit(200, 80);
-        createDashboardZwart(worldWidth, 80);
+
 
       
 
@@ -69,19 +68,7 @@ public class schaakSpel extends GameEngine{
      * @param zoomFactor   Factor waarmee wordt ingezoomd
      */
 
-    private void createDashboardWit(int dashboardWidth, int dashboardHeight) {
-        Dashboard dashboardWit = new Dashboard(40, 10, dashboardWidth, dashboardHeight);
-        witText = new Klok(this, "Wit",true);
-        dashboardWit.addGameObject(witText);
-        addDashboard(dashboardWit);
-        
-    }
-    private void createDashboardZwart(int dashboardWidth, int dashboardHeight) {
-        Dashboard dashboardZwart = new Dashboard(270, 10, dashboardWidth, dashboardHeight);
-        zwartText = new Klok(this, "Zwart",false);
-        dashboardZwart.addGameObject(zwartText);
-        addDashboard(dashboardZwart);
-    }
+  
 
     /**
      * Initialiseert de tilemap
