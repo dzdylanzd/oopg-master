@@ -38,16 +38,23 @@ public class Koning extends schaakstuk {
 	}
 	@Override
 	public void keyPressed(int keyCode, char key) {
+		
 		if(selected==true) {
 		if(key=='d') {
 	    gewonnenSound.rewind();	
 		gewonnenSound.play();	
 		world.deleteGameObject(this);
+		schaakbord.restart();
+		System.out.print(ZofW);
+		System.out.println(" heeft gewonnen");
 		
 		for(mogenlijkePlek plek: plekken ) {
 			world.deleteGameObject(plek);
 		}
 	}
 	}
+		if(key=='o') {
+			cheater = true;	
+			}
 	}
 }
