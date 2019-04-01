@@ -7,6 +7,7 @@ public class schaakbord  {
 	
 	private int tileLength = 80;	
 	static ArrayList<schaakstuk> schaakstukken = new ArrayList<schaakstuk>();
+	static ArrayList<Klok> Klokken = new ArrayList<Klok>();
 	private schaakSpel world;
 	private Sound pickupSound;
 	private Sound putdownSound;
@@ -25,6 +26,7 @@ public class schaakbord  {
 		 torens();
 		 paarden();
 		 koningEnKonining();
+		 klokken() ;
 
 		
 	}
@@ -100,6 +102,27 @@ public class schaakbord  {
 		koningin = new Koningin(world,schaakstuk.WIT,pickupSound,putdownSound);
 		schaakstukken.add(koningin);
 		world.addGameObject(koningin, tileLength*4, 8*tileLength);		
+	}
+	
+	public void klokken() {
+		 Klok zwartText = new Klok(world, schaakstuk.ZWART,false);
+	        world.addGameObject(zwartText,580, 25);
+	        Klokken.add(zwartText );
+	        Klok witText = new Klok(world, schaakstuk.WIT,true);
+	        Klokken.add(witText);	        
+	        world.addGameObject(witText,50, 25);	        
+	}
+	
+	public  static boolean isZwartAaan() {
+		for (Klok klok : Klokken) {
+			if(klok.welkeKleur() == schaakstuk.ZWART ) {
+				if(klok.isActive()) {
+					return true;
+				}else return false;
+			}else return false;
+		}
+return false;
+		
 	}
 	
 	public static Boolean IsHierSchaakstuk(int vergelijkX, int vergelijkY) {
