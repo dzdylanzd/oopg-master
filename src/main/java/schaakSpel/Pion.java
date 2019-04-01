@@ -31,14 +31,19 @@ public class Pion extends schaakstuk {
 		
 		if(ZofW == schaakstuk.WIT) {
 		if(!verplaatst) {
-			if(x < 800-tileSize && x > tileSize && y+tileSize*-2 < 800-tileSize && y+tileSize*-2 > tileSize  ) {
+			if(x < 800-tileSize && x > tileSize && y+tileSize*-2 < 800-tileSize && y+tileSize*-2 > tileSize && !schaakbord.IsHierSchaakstuk(realX,realY+tileSize*-2)  ) {
+				if(!schaakbord.IsHierSchaakstuk(realX,realY-tileSize)) {
+				if(!schaakbord.IsHierSchaakstuk(realX,realY+tileSize*-2)) {							
 		mogenlijkePlek plek = new mogenlijkePlek(world);
 		plekken.add(plek);	
 		world.addGameObject(plek,x,y+tileSize*-2);
+				}
+		
 		mogenlijkePlek plek2 = new mogenlijkePlek(world);
 		plekken.add(plek2);	
 		world.addGameObject(plek2,x,y+tileSize*-1);
 		verplaatst = true;
+		}
 			}
 		} else if(verplaatst) {
 			if(x < 800-tileSize && x > tileSize && y+tileSize*-1 < 800-tileSize && y+tileSize*-1 > tileSize && !schaakbord.IsHierSchaakstuk(realX,realY-tileSize) ) {
@@ -60,14 +65,19 @@ public class Pion extends schaakstuk {
 		}
 		else if(ZofW == schaakstuk.ZWART) {
 			if(!verplaatst) {
-				if(x < 800-tileSize && x > tileSize && y+tileSize*2 < 800-tileSize && y+tileSize*2 > tileSize  ) {
+				if(x < 800-tileSize && x > tileSize && y+tileSize*2 < 800-tileSize && y+tileSize*2 > tileSize   ) {
+					if(!schaakbord.IsHierSchaakstuk(realX,realY+tileSize)) {
+					if(!schaakbord.IsHierSchaakstuk(realX,realY+tileSize*2)) {
 			mogenlijkePlek plek = new mogenlijkePlek(world);
 			plekken.add(plek);	
 			world.addGameObject(plek,x,y+tileSize*2);
+					}
 			verplaatst = true;
+		
 			mogenlijkePlek plek2 = new mogenlijkePlek(world);
 			plekken.add(plek2);	
 			world.addGameObject(plek2,x,y+tileSize*1);
+			}
 				}
 			} else if(verplaatst) {
 				if(x < 800-tileSize && x > tileSize && y+tileSize*1 < 800-tileSize && y+tileSize*1 > tileSize && !schaakbord.IsHierSchaakstuk(realX,realY+tileSize)  ) {
