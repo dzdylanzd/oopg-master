@@ -5,6 +5,7 @@ import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.userinput.IKeyInput;
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 
 
@@ -50,7 +51,7 @@ public class Klok extends GameObject implements IKeyInput,IAlarmListener{
 
     @Override
     public void draw(PGraphics g) {
-        g.textAlign(g.LEFT, g.TOP);
+        g.textAlign(PConstants.LEFT, PConstants.TOP);
         g.textSize(30);
         g.text(name+": "+minuten+":"+geefTijdNotatie(), getX(), getY());
     }
