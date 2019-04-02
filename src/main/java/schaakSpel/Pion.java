@@ -5,8 +5,17 @@ import nl.han.ica.oopg.sound.Sound;
 
 public class Pion extends schaakstuk {
 	
+		/** houd bij of de pion al verplaatst is
+		 * 
+		 */
 		private boolean verplaatst = false;	
 
+	/** de constructor van pion
+	 * @param world geef de main methode mee
+	 * @param text geeft de kleur mee
+	 * @param pickupSound geef het pickupSound mee 
+	 * @param putdownSound geef het pickdownSound mee
+	 */
 	public Pion(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Pawn.png"),pickupSound,putdownSound);
 		ZofW = text;
@@ -17,6 +26,10 @@ public class Pion extends schaakstuk {
 
 
 	
+	
+	/** hiermee maken we de sugestie velden van pion
+	 * @see schaakSpel.schaakstuk#maakPlekken()
+	 */
 	@Override
 	protected void maakPlekken() {
 		float x = getX()-15;

@@ -16,24 +16,69 @@ import nl.han.ica.oopg.userinput.IKeyInput;
 
 public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICollidableWithTiles,IKeyInput{
 	
+	/**de constante voor zwart
+	 * 
+	 */
 	public final static String ZWART = "black";
+	/**de constante voor wit
+	 * 
+	 */
 	public final static String WIT = "white";
+	/** boolean of we de mogenlijke vakjes al getekend hadden
+	 * 
+	 */
 	protected boolean getekend = false;
+	/** boolean of het schaakstuk is geselecteerd
+	 * 
+	 */
 	protected boolean selected = false;
+	/** lijst met alle getekende mogenlijke plekken van dit schaakstuk
+	 * 
+	 */
 	protected ArrayList<mogenlijkePlek> plekken = new ArrayList<mogenlijkePlek>();
+	/** het pak op geluid
+	 * 
+	 */
 	private Sound pickupSound;
-	private Sound putdownSound;
+	/** het zet neer geluid
+	 * 
+	 */
+	private Sound putdownSound;	
+	/** de verwijzing naar de main class
+	 * 
+	 */
+	 
 	protected schaakSpel world;
+	/** hier staat de string in waar in staat of het een wit of een zwart stuk is
+	 * 
+	 */
 	protected String ZofW;
+	/** de grote van een tile
+	 * 
+	 */
 	int tileSize = 80;
+	/** of je dit schaakstuk hebt gedelete
+	 * 
+	 */
 	boolean deleted = false;
+	/** of je aan het cheaten bent 
+	 * 
+	 */
 	boolean cheater = false;
 	
+	/** hiermee haal je het deleted variabel mee
+	 * @return deleted (boolean)
+	 */
 	public boolean getDeleted() {
 		return deleted;
 	}
 
 
+	/**
+	 * @param sprite hier kan je de sprite mee geven
+	 * @param pickupSound geef het pickupSound mee 
+	 * @param putdownSound geef het pickdownSound mee
+	 */
 	public schaakstuk(Sprite sprite, Sound pickupSound, Sound putdownSound) {
 		super(sprite);
 		this.pickupSound=pickupSound;
@@ -41,7 +86,12 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	}
 
 	
+	/** abstracte methode voor het maken van sugestie vakken
+	 * 
+	 */
 	protected abstract void maakPlekken();	
+	
+	
 	
 	public void mouseClicked(int x, int y, int button) {
 		if(!cheater) {
@@ -86,6 +136,10 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		
 	}
 	
+	/** hiermee haal jet het selected variabel op
+	 * @return selected
+	 * 
+	 */
 	public boolean getSelected(){
 	return selected;
 	}
@@ -172,6 +226,11 @@ if(key=='o') {
 
 	
 	
+	/** hier wordt terug gegeven of hij zwart of wit is het schaakstuk
+	 * @return String ZWART of WIT
+	 * 
+	 *
+	 */
 	public String getZW(){
 		return ZofW;
 		

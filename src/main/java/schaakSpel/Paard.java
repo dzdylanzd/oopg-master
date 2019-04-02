@@ -5,12 +5,23 @@ import nl.han.ica.oopg.sound.Sound;
 
 public class Paard extends schaakstuk {	
 	
+	/** de constructor van Paard
+	 * @param world geef de main methode mee
+	 * @param text geeft de kleur mee
+	 * @param pickupSound geef het pickupSound mee 
+	 * @param putdownSound geef het pickdownSound mee
+	 */
 	public Paard(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Knight.png"),pickupSound,putdownSound);
 		this.world = world;		
 		ZofW = text;
 	}
-
+	
+	
+	
+	/** hiermee maken we de sugestie velden van Paard
+	 * @see schaakSpel.schaakstuk#maakPlekken()
+	 */
 	@Override
 	protected void maakPlekken() {
 		float x = getX()-15;

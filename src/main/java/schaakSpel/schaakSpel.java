@@ -11,10 +11,23 @@ import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
 
+/**
+ * @author Dylan zweers
+ *
+ */
 public class schaakSpel extends GameEngine{
 	
+	/** het op pak geluid
+	 * 
+	 */
 	private Sound pickupSound;
+	/** het neer zet geluid
+	 * 
+	 */
 	private Sound putdownSound;
+	/** het gewonnen geluid
+	 * 
+	 */
 	private Sound gewonnenSound;
 	
 
@@ -108,6 +121,9 @@ public class schaakSpel extends GameEngine{
     	    
     
 
+    /** initialiseerd de geluiden
+     * 
+     */
     private void initializeSounds() {
     	pickupSound = new Sound(this, "src/main/java/schaakSpel/media/pickup.mp3");
     	putdownSound = new Sound(this, "src/main/java/schaakSpel/media/putdown.mp3");
