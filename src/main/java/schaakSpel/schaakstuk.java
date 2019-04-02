@@ -46,12 +46,21 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 	public void mouseClicked(int x, int y, int button) {
 		if(!cheater) {
 		if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == false) {
+			if(schaakbord.schaakstukVast()) {
+				if(schaakbord.GeselecteerdStuk().mogenlijkePlek((int) getX(),(int) getY())) {
+					selected=true;					
+					pickupSound.rewind();
+					pickupSound.play();								
+				}
+			}else {
+			
 		selected=true;
 	
 		pickupSound.rewind();
 		pickupSound.play();			
+			}
 		
-	}else if(mogenlijkePlek((int) getX(),(int) getY()) == true ){
+	}else if(mogenlijkePlek((int) getX(),(int) getY()) == true){
 		selected=false;		
 		update();
 		putdownSound.rewind();
@@ -60,6 +69,7 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		}
 		}else if(cheater) {
 			if(x>getX() && x<getX()+getWidth() && y>getY() && y<getY()+getHeight() && selected == false) {
+				
 				selected=true;
 			
 				pickupSound.rewind();
@@ -75,6 +85,10 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		}
 		
 	}
+	
+	public boolean getSelected(){
+	return selected;
+	}
 			
 		
 	public void keyPressed(int keyCode, char key) {
@@ -82,6 +96,7 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		if(selected==true) {
 		if(key=='d') {
 			this.deleted = true;
+			selected = false;
 			this.setX(0);
 			this.setY(0);
 		world.deleteGameObject(this);
