@@ -10,6 +10,7 @@ import nl.han.ica.oopg.tile.TileType;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
+
 public class schaakSpel extends GameEngine{
 	
 	private Sound pickupSound;
