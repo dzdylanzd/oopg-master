@@ -14,10 +14,10 @@ public class schaakbord  {
 	private static Sound gewonnenSound;
 	
 	public schaakbord(schaakSpel world, Sound pickupSound, Sound putdownSound, Sound gewonnenSound){
-		this.pickupSound=pickupSound;
-		this.putdownSound=putdownSound;
-		this.gewonnenSound=gewonnenSound;
-		this.world = world;		
+		schaakbord.pickupSound=pickupSound;
+		schaakbord.putdownSound=putdownSound;
+		schaakbord.gewonnenSound=gewonnenSound;
+		schaakbord.world = world;		
 	}
 	
 	public static void startGame() {
@@ -35,6 +35,7 @@ public class schaakbord  {
 		
 			world.deleteAllGameOBjects();
 			schaakstukken.clear();
+			Klokken.clear();
 			startGame();
 		
 	}
