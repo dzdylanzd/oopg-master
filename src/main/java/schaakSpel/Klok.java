@@ -27,7 +27,7 @@ public class Klok extends GameObject implements IAlarmListener,IMouseInput{
     }
 
     public void setText(String text) {
-        this.text =text;
+        this.text = text;
     }
     
     
