@@ -34,6 +34,7 @@ public class schaakbord  {
 	public static void restart() {
 		
 			world.deleteAllGameOBjects();
+			schaakstukken.clear();
 			startGame();
 		
 	}
@@ -150,6 +151,29 @@ return false;
 	
 	return false;
 	}
+	
+	public static boolean schaakstukVast() {
+		for (schaakstuk schaakstuk : schaakstukken) {
+			if(schaakstuk.getSelected()) {
+				return true;
+			}
+		}
+		return false;
+	
+	}
+	
+	public static schaakstuk GeselecteerdStuk() {
+		schaakstuk jan = null;
+		for (schaakstuk schaakstuk : schaakstukken) {
+			if(schaakstuk.getSelected()) {
+				return schaakstuk;
+			}
+		}
+		return jan;
+	}
+	
+
+
 	
 	public static String WelkeKleur(int vergelijkX, int vergelijkY) {
 		int X;
