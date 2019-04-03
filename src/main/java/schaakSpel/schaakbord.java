@@ -9,7 +9,7 @@ import nl.han.ica.oopg.sound.Sound;
  */
 public class schaakbord  {	
 	
-	/** de groote van een tile
+	/** de grote van een tile
 	 * 
 	 */
 	private static int tileLength = 80;	
@@ -66,7 +66,7 @@ public class schaakbord  {
 		
 	}
 	
-	/** met deze functie kun je het spel herstarten . Het maakt het schaakbord leeg en maakt alles objecten opnieuw aan
+	/** met deze functie kun je het spel herstarten. Het maakt het schaakbord leeg en maakt alle objecten opnieuw aan
 	 * 
 	 */
 	public static void restart() {
@@ -178,7 +178,7 @@ public class schaakbord  {
 	        world.addGameObject(witText,50, 25);	        
 	}
 	
-	/** met deze functie kan je kijken of eem bepaald kleur klok aan is
+	/** met deze functie kan je kijken of een bepaald kleur klok aan is
 	 * @param ZofW
 	 * @return of de megegeven klok aan is
 	 */
@@ -194,7 +194,7 @@ return false;
 		
 	}
 	
-	/** hierme kijk je of er een schaakstuk is op de mee gegeven coordinaten
+	/** hiermee kijk je of er een schaakstuk is op de meegegeven coordinaten
 	 * @param vergelijkX de vergelijk x
 	 * @param vergelijkY de vergelijk y
 	 * @return boolean of er een schaakstuk is
@@ -247,7 +247,7 @@ return false;
 
 
 	
-	/** hier mee kan je de kleur ophalen van het schaakstuk op de mee gegeven x en y
+	/** hier mee kan je de kleur ophalen van het schaakstuk op de meegegeven x en y
 	 * @param vergelijkX de x waar het schaakstuk is waar je de kleur van wilt weten
 	 * @param vergelijkY de y waar het schaakstuk is waar je de kleur van wilt weten
 	 * @return de kleur van het schaakstuk op de mee gegeven x en y

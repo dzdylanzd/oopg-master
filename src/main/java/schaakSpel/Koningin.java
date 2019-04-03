@@ -6,10 +6,10 @@ import nl.han.ica.oopg.sound.Sound;
 public class Koningin extends schaakstuk {	
 
 	/** de constructor van koningin
-	 * @param world geef de main methode mee
+	 * @param world geeft de main methode mee
 	 * @param text geeft de kleur mee
-	 * @param pickupSound geef het pickupSound mee 
-	 * @param putdownSound geef het pickdownSound mee
+	 * @param pickupSound geeft het pickupSound mee 
+	 * @param putdownSound geeft het pickdownSound mee
 	 */
 	public Koningin(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Queen.png"),pickupSound,putdownSound);
@@ -18,7 +18,7 @@ public class Koningin extends schaakstuk {
 		
 	}
 
-	/** hiermee maken we de sugestie velden van koning
+	/** hiermee maken we de sugestie velden van koningin
 	 * @see schaakSpel.schaakstuk#maakPlekken()
 	 */
 	@Override

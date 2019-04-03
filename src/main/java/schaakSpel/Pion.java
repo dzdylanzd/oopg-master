@@ -13,8 +13,8 @@ public class Pion extends schaakstuk {
 	/** de constructor van pion
 	 * @param world geef de main methode mee
 	 * @param text geeft de kleur mee
-	 * @param pickupSound geef het pickupSound mee 
-	 * @param putdownSound geef het pickdownSound mee
+	 * @param pickupSound geeft het pickupSound mee 
+	 * @param putdownSound geeft het pickdownSound mee
 	 */
 	public Pion(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Pawn.png"),pickupSound,putdownSound);
@@ -27,7 +27,7 @@ public class Pion extends schaakstuk {
 
 	
 	
-	/** hiermee maken we de sugestie velden van pion
+	/** hiermee maken we de suggestie velden van een pion
 	 * @see schaakSpel.schaakstuk#maakPlekken()
 	 */
 	@Override

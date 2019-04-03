@@ -3,7 +3,6 @@ package schaakSpel;
 import nl.han.ica.oopg.alarm.Alarm;
 import nl.han.ica.oopg.alarm.IAlarmListener;
 import nl.han.ica.oopg.objects.GameObject;
-import nl.han.ica.oopg.userinput.IKeyInput;
 import nl.han.ica.oopg.userinput.IMouseInput;
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -106,7 +105,7 @@ public class Klok extends GameObject implements IAlarmListener,IMouseInput{
 	}
     
 
-    /** hier teken we de klok
+    /** hier tekenen we de klok
      * @see nl.han.ica.oopg.objects.GameObject#draw(processing.core.PGraphics)
      */
     @Override
@@ -118,7 +117,7 @@ public class Klok extends GameObject implements IAlarmListener,IMouseInput{
    
 
 
-	/** hier is de trigger om de seconden elke seconden doet hij een tik en start het alarm opnieuw
+	/** hier is de trigger seconden doet hij een tik en start het alarm opnieuw
 	 * @see nl.han.ica.oopg.alarm.IAlarmListener#triggerAlarm(java.lang.String)
 	 */
 	@Override

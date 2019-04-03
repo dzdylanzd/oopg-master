@@ -46,7 +46,7 @@ public class schaakSpel extends GameEngine{
         int worldWidth = 800;
         int worldHeight = 800;    
         initializeSounds();
-       schaakbord shaakbord = new schaakbord(this,pickupSound,putdownSound,gewonnenSound);
+       schaakbord schaakbord = new schaakbord(this,pickupSound,putdownSound,gewonnenSound);
         schaakbord.startGame();       
        initializeTileMap();
         createViewWithoutViewport(worldWidth, worldHeight);

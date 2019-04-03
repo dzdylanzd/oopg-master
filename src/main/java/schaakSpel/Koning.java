@@ -8,10 +8,10 @@ public class Koning extends schaakstuk {
 	private Sound gewonnenSound;
 	
 	/** de constructor van Koning
-	 * @param world geef de main methode mee
+	 * @param world geeft de main methode mee
 	 * @param text geeft de kleur mee
-	 * @param pickupSound geef het pickupSound mee 
-	 * @param putdownSound geef het pickdownSound mee
+	 * @param pickupSound geeft het pickupSound mee 
+	 * @param putdownSound geeft het pickdownSound mee
 	 */
 	public Koning(schaakSpel world,String text, Sound pickupSound, Sound putdownSound, Sound gewonnenSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "King.png"),pickupSound,putdownSound);
@@ -22,7 +22,7 @@ public class Koning extends schaakstuk {
 
 	
 	
-	/** hiermee maken we de sugestie velden van pion
+	/** hiermee maken we de suggestie velden van de koning
 	 * @see schaakSpel.schaakstuk#maakPlekken()
 	 */
 	@Override
@@ -50,7 +50,7 @@ public class Koning extends schaakstuk {
 	}
 	
 	
-	/** keyPressed om als een koning vermoord wordt een gewonnen geluid af te spelen en het spel te reseten wanneer je koning wordt gedelet
+	/** keyPressed om als een koning vermoord wordt een gewonnen geluid af te spelen en het spel te resetten wanneer je koning wordt gedelete
 	 * @see schaakSpel.schaakstuk#keyPressed(int, char)
 	 */
 	@Override

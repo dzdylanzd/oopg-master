@@ -76,8 +76,8 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 
 	/**
 	 * @param sprite hier kan je de sprite mee geven
-	 * @param pickupSound geef het pickupSound mee 
-	 * @param putdownSound geef het pickdownSound mee
+	 * @param pickupSound geeft het pickupSound mee 
+	 * @param putdownSound geeft het pickdownSound mee
 	 */
 	public schaakstuk(Sprite sprite, Sound pickupSound, Sound putdownSound) {
 		super(sprite);
@@ -136,7 +136,7 @@ public abstract class schaakstuk extends SpriteObject implements IMouseInput,ICo
 		
 	}
 	
-	/** hiermee haal jet het selected variabel op
+	/** hiermee haal het het selected variabel op
 	 * @return selected
 	 * 
 	 */

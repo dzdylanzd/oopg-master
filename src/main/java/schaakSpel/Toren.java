@@ -6,10 +6,10 @@ import nl.han.ica.oopg.sound.Sound;
 public class Toren extends schaakstuk {
 
 	/** de constructor van toren
-	 * @param world geef de main methode mee
+	 * @param world geeft de main methode mee
 	 * @param text geeft de kleur mee
-	 * @param pickupSound geef het pickupSound mee 
-	 * @param putdownSound geef het pickdownSound mee
+	 * @param pickupSound geeft het pickupSound mee 
+	 * @param putdownSound geeft het pickdownSound mee
 	 */
 	public Toren(schaakSpel world,String text, Sound pickupSound, Sound putdownSound) {
 		super(new Sprite("src/main/java/schaakSpel/media/" + text + "Rook.png"),pickupSound,putdownSound);
@@ -17,7 +17,7 @@ public class Toren extends schaakstuk {
 		ZofW = text;
 	}
 
-	/** hiermee maken we de sugestie velden van toren
+	/** hiermee maken we de suggestie velden van de toren
 	 * @see schaakSpel.schaakstuk#maakPlekken()
 	 */
 	@Override
