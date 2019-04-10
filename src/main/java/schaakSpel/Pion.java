@@ -44,9 +44,9 @@ public class Pion extends schaakstuk {
 		
 		if(ZofW == schaakstuk.WIT) {
 		if(!verplaatst) {
-			if(x < 800-tileSize && x > tileSize && y+tileSize*-2 < 800-tileSize && y+tileSize*-2 > tileSize && !schaakbord.IsHierSchaakstuk(realX,realY+tileSize*-2)  ) {
+			if(x < 800-tileSize && x > tileSize && y+tileSize*-2 < 800-tileSize && y+tileSize*-2 > tileSize  ) {
 				if(!schaakbord.IsHierSchaakstuk(realX,realY-tileSize)) {
-				if(!schaakbord.IsHierSchaakstuk(realX,realY+tileSize*-2)) {							
+					if(!schaakbord.IsHierSchaakstuk(realX,realY-tileSize*2)) {						
 		mogenlijkePlek plek = new mogenlijkePlek(world);
 		plekken.add(plek);	
 		world.addGameObject(plek,x,y+tileSize*-2);
